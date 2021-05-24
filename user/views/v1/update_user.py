@@ -12,8 +12,8 @@ from common.decarators import get_user
 RESPONSE = generate_200_base_response()
 
 
-@swagger_auto_schema(tags=['User'], operation_description="Change User Informations", method="POST", request_body=UserUpdateParameterSerializer, responses=RESPONSE, USE_SESSION_AUTH=False)
-@api_view(["POST"])
+@swagger_auto_schema(tags=['User'], operation_description="Change User Informations", method="PUT", request_body=UserUpdateParameterSerializer, responses=RESPONSE, USE_SESSION_AUTH=False)
+@api_view(["PUT"])
 @validator("body", UserUpdateParameterSerializer)
 @get_user()
 def update_user(request, serializer, user):
