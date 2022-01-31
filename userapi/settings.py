@@ -92,15 +92,14 @@ WSGI_APPLICATION = 'userapi.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
+POSTGRES_DB = os.getenv("POSTGRESS_HOST", "localhost")
 DATABASES = {
-
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'userApi',
         'USER': 'postgres',
         'PASSWORD': '',
-        'HOST': 'localhost',
+        'HOST': POSTGRES_DB,
         'PORT': '5432',
     }
 }

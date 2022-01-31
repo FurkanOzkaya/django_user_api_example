@@ -15,10 +15,16 @@ with swagger support
 ----
 
 ## Development 
+### Option 1: Use Docker Compose
 
+```
+docker-compose up
+```
+
+### Option 2: Manual
 ### Requirements
 
-if you want use docker instead of downloading postgres ?
+You need postgresql database you can use postgres docker instead of downloading postgres ?
 
 ```
 docker run -e POSTGRES_HOST_AUTH_METHOD=trust -p 5432:5432 -v D:\userapi\datas:/var/lib/postgresql/data postgres
@@ -35,13 +41,6 @@ Now you are ready to run
 
 ```
 python manage.py runserver
-```
-
-#### Docker Usage
-```
-docker build . user_api
-
-docker run --network=host user_api
 ```
 
 NOTE: You can check VSCode run section for easy run after select enviroment.
