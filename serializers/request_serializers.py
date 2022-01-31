@@ -51,5 +51,6 @@ class UserAvatarParameterSerializer(ModelSerializer):
 class UserUpdateParameterSerializer(ModelSerializer):
     class Meta:
         model = UserModel
-        exclude = ["avatar", "groups", "username",
-                   "password", "user_permissions"]
+        exclude = ["avatar", "groups", "username", "password",
+                   "user_permissions", "last_login", "is_superuser",
+                   "is_staff", "is_active", "date_joined"]

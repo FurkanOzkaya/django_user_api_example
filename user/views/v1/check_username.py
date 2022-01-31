@@ -12,10 +12,17 @@ from common.common_funtions import generate_200_base_response
 RESPONSE = generate_200_base_response()
 
 
-@swagger_auto_schema(tags=['User'], operation_description="Check Username is exist or not", method="GET", query_serializer=CheckUsernameParameterSerialzier, responses=RESPONSE)
+@swagger_auto_schema(tags=['User'], method="GET", query_serializer=CheckUsernameParameterSerialzier, responses=RESPONSE)
 @api_view(["GET"])
 @validator(validator=CheckUsernameParameterSerialzier)
 def check_username(request, serializer):
+    """
+    Check if username is already in use or not  
+    if  
+        username available return: 200 
+        except return: 400 
+        error cases: 500
+    """
     username = serializer.data.get("username")
     try:
         UserModel.objects.get(username=username)

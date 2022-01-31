@@ -15,16 +15,12 @@ Including another URLconf
 """
 
 from django.urls import path
-from user.views.v1.register_user import register_user
+from user.views.v1.user import User
 from user.views.v1.check_username import check_username
-from user.views.v1.get_user import get_user_info
 from user.views.v1.change_avatar import change_avatar
-from user.views.v1.update_user import update_user
 
 urlpatterns = [
-    path('register/', register_user),
+    path('', User.as_view()),
     path('check-username/', check_username),
-    path('info/', get_user_info),
     path('change-avatar/', change_avatar),
-    path('update-user/', update_user),
 ]

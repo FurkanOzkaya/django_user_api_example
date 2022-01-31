@@ -8,7 +8,7 @@ def validator(type="query_string", validator=None):
     def inner_validator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
-            request = args[0]
+            request = args[-1]
             if validator == None:
                 print(
                     "Validator Decorator return - 400 - validator not sent to funtion")
@@ -20,7 +20,7 @@ def validator(type="query_string", validator=None):
             else:
                 print("Type is wrong")
             if serializer.is_valid():
-                res = func(serializer=serializer, *args, **kwargs)
+                res = func(*args, **kwargs, serializer=serializer)
             else:
                 print(
                     "Validator Decorator return - 400 - serializer is not valid: ", serializer.errors)
@@ -34,7 +34,7 @@ def get_user():
     def inner_validator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
-            request = args[0]
+            request = args[-1]
             user = get_user_by_id(request.user.id)
             if user:
                 res = func(*args, **kwargs, user=user)
